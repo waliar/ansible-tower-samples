@@ -25,3 +25,32 @@
     state: directory
     owner: prometheus
     group: prometheus
+- name: Unarchive prometheus 2.4.1 precompiled binaries
+  unarchive:
+    src: https://github.com/prometheus/prometheus/releases/download/v2.4.1/prometheus-2.4.1.linux-amd64.tar.gz
+    dest: ~
+    remote_src: yes
+- name: copy prometheus binary to /usr/local/bin directory
+  copy:
+    src: ~/prometheus-2.4.1.linux-amd64/prometheus
+    dest: /usr/local/bin
+    owner: prometheus
+    group: prometheus   
+- name: copy promtool binary to /usr/local/bin directory
+  copy:
+    src: ~/prometheus-2.4.1.linux-amd64/promtool
+    dest: /usr/local/bin
+    owner: prometheus
+    group: prometheus   
+- name: copy consoles binary to /etc/prometheus directory
+  copy:
+    src: ~/prometheus-2.0.0.linux-amd64/consoles
+    dest: /etc/prometheus
+    owner: prometheus
+    group: prometheus   
+- name: copy console_libraries binary to /etc/prometheus directory
+  copy:
+    src: ~/prometheus-2.0.0.linux-amd64/console_libraries
+    dest: /etc/prometheus
+    owner: prometheus
+    group: prometheus    
