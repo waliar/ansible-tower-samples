@@ -4,4 +4,7 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-
+- name: Ensure group "prometheus" exists
+  group:
+    name: prometheus
+    state: present
